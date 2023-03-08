@@ -3,6 +3,7 @@ from rest_framework.views import APIView
 from .models import RoadSegment, Measurement, TrafficIntensity, TrafficCharacterization
 from .serializers import RoadSegmentSerializer, MeasurementSerializer, FileUploadSerializer
 from django.contrib.gis.geos import LineString
+from .permissions import CanCRUD, CanRead
 import pandas as pd
 
 def update_segment_characterization(segment, speed):
@@ -16,10 +17,16 @@ def update_segment_characterization(segment, speed):
     road.save()
 
 class UploadFileView(generics.CreateAPIView):
+    """
+    API endpoint to upload data through a CSV file.
+    """
 
     serializer_class = FileUploadSerializer
 
     def post(self, request):
+        """
+        Reads the given CSV file and inserts the data to the database.
+        """
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         file = serializer.validated_data['file']
@@ -42,7 +49,16 @@ class RoadSegmentViewSet(viewsets.ModelViewSet):
     queryset = RoadSegment.objects.all().order_by('-characterization')
     serializer_class = RoadSegmentSerializer
     filterset_fields = ('characterization',)
-    permission_classes = [permissions.IsAuthenticated]
+    
+    def get_permissions(self):
+        """
+        Define the permissions according to the type of request.
+        """    
+        if self.request.method == 'GET':
+            self.permission_classes = [CanRead]
+        elif self.request.method == 'POST' or self.request.method == 'DELETE' or self.request.method == 'PUT' or self.request.method == 'PATCH':
+            self.permission_classes = [CanCRUD]
+        return super(RoadSegmentViewSet, self).get_permissions()
 
 
 class MeasurementView(APIView):
@@ -50,7 +66,15 @@ class MeasurementView(APIView):
     API endpoint that allows read and create measurements for a given road segment.
     """
 
-    permission_classes = [permissions.IsAuthenticated]
+    def get_permissions(self):  
+        """
+        Define the permissions according to the type of request.
+        """      
+        if self.request.method == 'GET':
+            self.permission_classes = [CanRead]
+        elif self.request.method == 'POST' or self.request.method == 'DELETE' or self.request.method == 'PUT' or self.request.method == 'PATCH':
+            self.permission_classes = [CanCRUD]
+        return super(RoadSegmentViewSet, self).get_permissions()
 
     def get(self, request, *args, **kwargs):
         """
@@ -84,7 +108,15 @@ class MeasurementDetailView(APIView):
     API endpoint that allows to read, update and delete a given measurement.
     """
 
-    permission_classes = [permissions.IsAuthenticated]
+    def get_permissions(self):  
+        """
+        Define the permissions according to the type of request.
+        """      
+        if self.request.method == 'GET':
+            self.permission_classes = [CanRead]
+        elif self.request.method == 'POST' or self.request.method == 'DELETE' or self.request.method == 'PUT' or self.request.method == 'PATCH':
+            self.permission_classes = [CanCRUD]
+        return super(RoadSegmentViewSet, self).get_permissions()
 
     def get_measurement(self, measurement_id):
         '''
