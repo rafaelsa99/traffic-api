@@ -1,0 +1,592 @@
+{
+	"info": {
+		"_postman_id": "1e1f7e54-8b1e-4b97-8c57-84199ff46fed",
+		"name": "Traffic REST API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26252490"
+	},
+	"item": [
+		{
+			"name": "Users Management",
+			"item": [
+				{
+					"name": "Login Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"admin\",\n    \"password\": \"admin\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List User Groups",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzEyMDA4LCJpYXQiOjE2NzgzMTE3MDgsImp0aSI6IjU0YmM3ZGRiNWI2ZjRhOTFhMWRiMTIwMmY2YTU1ZDEyIiwidXNlcl9pZCI6MX0.JfNVmXc7P-tnhMWIgWX2N96RfKRVbCP4jKMAopUhKt8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/groups",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"groups"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Register Guest User",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzEyMTY3LCJpYXQiOjE2NzgzMTE4NjcsImp0aSI6IjYzZTFhMWE0NjQyNTQzMDBiNTZlNzU2MjY1YmNhNmVlIiwidXNlcl9pZCI6MX0.r7YlpX1_yVI3LTFsquScrGREMa7t6shZgCAjlNUfVRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"guest_user\",\n    \"email\": \"guest@email.com\",\n    \"password\": \"ubiwhere2023\",\n    \"password2\": \"ubiwhere2023\",\n    \"groups\": [2]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/register/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login Guest",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzEzMDcwLCJpYXQiOjE2NzgzMTI3NzAsImp0aSI6IjJiZTQ1MWYxOGZhMDQ3OTdhOGU0ZmI0NTVhZTVhMTRlIiwidXNlcl9pZCI6MX0.Osv1enQtciFjL2Di--j0pWUxDLySqu-IxExj3gt_gGw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"guest_user\",\n    \"password\": \"ubiwhere2023\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/login/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Road Segments Operations",
+			"item": [
+				{
+					"name": "List Road Segments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzEyMTY3LCJpYXQiOjE2NzgzMTE4NjcsImp0aSI6IjYzZTFhMWE0NjQyNTQzMDBiNTZlNzU2MjY1YmNhNmVlIiwidXNlcl9pZCI6MX0.r7YlpX1_yVI3LTFsquScrGREMa7t6shZgCAjlNUfVRU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/segment",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Road Segment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzEyNTEzLCJpYXQiOjE2NzgzMTIyMTMsImp0aSI6IjU5ZmVjMWMyNWJjODQ3MTNiOWRiYzBkYjBkMGQ5ZjFkIiwidXNlcl9pZCI6MX0.KJZNMOy-NjrclHimbNuds_XVayJ_oR-yZHd2aOFEjV8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"length\": 620.905,\n    \"location\": \"LINESTRING(103.9460064 30.75066046, 103.9412759 30.75449343)\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/segment/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Filter Road Segments",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzEyODk3LCJpYXQiOjE2NzgzMTI1OTcsImp0aSI6IjA4ODI5ZTA4NzVjNDQ3MTNhZTU4MzdiMDQwYmRiNDgxIiwidXNlcl9pZCI6MX0.obp15RoAZlzxm35DeUwRzY4HJWg_7tqxO8Qhb9s__Vw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/segment?characterization=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment"
+							],
+							"query": [
+								{
+									"key": "characterization",
+									"value": "3",
+									"description": "High Traffic"
+								},
+								{
+									"key": "characterization",
+									"value": "2",
+									"description": "Moderate Traffic",
+									"disabled": true
+								},
+								{
+									"key": "characterization",
+									"value": "1",
+									"description": "Low Traffic",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Road Segment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzE0MDA0LCJpYXQiOjE2NzgzMTM3MDQsImp0aSI6IjUxMTI1ZWFmN2Y0MTQ5NzRiYzM5N2U3MzA2YTBkY2JjIiwidXNlcl9pZCI6MX0.3AaBp9CZ-CAyXPvdCElV_XwS50ZVWsq3AhwyeqoGoTk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/segment/30560/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment",
+								"30560",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Road Segment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzEzNDQ4LCJpYXQiOjE2NzgzMTMxNDgsImp0aSI6ImYxNGVjNjVjNzMwMTQ4YzlhM2IyNzc5M2JjYTg4YWMxIiwidXNlcl9pZCI6MX0.KG7S1y78NskVXQKhdEG5sUN-8ocDkUi84OB8aD4Q3-s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"length\": 620.905,\n    \"location\": \"LINESTRING(103.9460064 30.75066046, 103.9412759 30.75449343)\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/segment/30560/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment",
+								"30560",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Road Segment",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzEzMDcwLCJpYXQiOjE2NzgzMTI3NzAsImp0aSI6IjJiZTQ1MWYxOGZhMDQ3OTdhOGU0ZmI0NTVhZTVhMTRlIiwidXNlcl9pZCI6MX0.Osv1enQtciFjL2Di--j0pWUxDLySqu-IxExj3gt_gGw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/segment/30560/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment",
+								"30560",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Speed Measurements Operations",
+			"item": [
+				{
+					"name": "List Measurements",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzE0MDA0LCJpYXQiOjE2NzgzMTM3MDQsImp0aSI6IjUxMTI1ZWFmN2Y0MTQ5NzRiYzM5N2U3MzA2YTBkY2JjIiwidXNlcl9pZCI6MX0.3AaBp9CZ-CAyXPvdCElV_XwS50ZVWsq3AhwyeqoGoTk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/segment/30560/measurement",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment",
+								"30560",
+								"measurement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Measurement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzE0MDA0LCJpYXQiOjE2NzgzMTM3MDQsImp0aSI6IjUxMTI1ZWFmN2Y0MTQ5NzRiYzM5N2U3MzA2YTBkY2JjIiwidXNlcl9pZCI6MX0.3AaBp9CZ-CAyXPvdCElV_XwS50ZVWsq3AhwyeqoGoTk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"avg_speed\": 20.25\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/segment/30560/measurement",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment",
+								"30560",
+								"measurement"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "View Measurement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzE0MDA0LCJpYXQiOjE2NzgzMTM3MDQsImp0aSI6IjUxMTI1ZWFmN2Y0MTQ5NzRiYzM5N2U3MzA2YTBkY2JjIiwidXNlcl9pZCI6MX0.3AaBp9CZ-CAyXPvdCElV_XwS50ZVWsq3AhwyeqoGoTk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/segment/30560/measurement/35666/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment",
+								"30560",
+								"measurement",
+								"35666",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Edit Measurement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzE0MDA0LCJpYXQiOjE2NzgzMTM3MDQsImp0aSI6IjUxMTI1ZWFmN2Y0MTQ5NzRiYzM5N2U3MzA2YTBkY2JjIiwidXNlcl9pZCI6MX0.3AaBp9CZ-CAyXPvdCElV_XwS50ZVWsq3AhwyeqoGoTk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"avg_speed\": 5.15\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8000/segment/30560/measurement/35666/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment",
+								"30560",
+								"measurement",
+								"35666",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Measurement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzE0MDA0LCJpYXQiOjE2NzgzMTM3MDQsImp0aSI6IjUxMTI1ZWFmN2Y0MTQ5NzRiYzM5N2U3MzA2YTBkY2JjIiwidXNlcl9pZCI6MX0.3AaBp9CZ-CAyXPvdCElV_XwS50ZVWsq3AhwyeqoGoTk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8000/segment/30560/measurement/35666/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8000",
+							"path": [
+								"segment",
+								"30560",
+								"measurement",
+								"35666",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Upload File",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjc4MzEyMTY3LCJpYXQiOjE2NzgzMTE4NjcsImp0aSI6IjYzZTFhMWE0NjQyNTQzMDBiNTZlNzU2MjY1YmNhNmVlIiwidXNlcl9pZCI6MX0.r7YlpX1_yVI3LTFsquScrGREMa7t6shZgCAjlNUfVRU",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "file",
+					"file": {}
+				},
+				"url": {
+					"raw": "http://localhost:8000/upload/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"upload",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
