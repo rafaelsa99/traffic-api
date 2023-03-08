@@ -20,10 +20,11 @@ from rest_framework import routers
 
 router = routers.DefaultRouter()
 router.register(r'segment', views.RoadSegmentViewSet) 
-router.register(r'measurement', views.MeasurementViewSet) 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('upload/', views.UploadFileView.as_view()),
-    path('', include(router.urls))
+    path('', include(router.urls)),
+    path('segment/<int:segment>/measurement', views.MeasurementView.as_view()),
+    path('segment/<int:segment>/measurement/<int:measurement>/', views.MeasurementDetailView.as_view()),
 ]

@@ -15,4 +15,4 @@ class RoadSegmentSerializer(GeoFeatureModelSerializer):
 class MeasurementSerializer(ModelSerializer):
     class Meta:
         model = Measurement
-        fields = ['id', 'avg_speed', 'created_on']
+        fields = ['id', 'segment', 'avg_speed', 'created_on']
