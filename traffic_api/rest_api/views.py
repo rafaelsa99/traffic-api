@@ -1,10 +1,11 @@
 from rest_framework import viewsets, status, permissions, generics, response
 from rest_framework.views import APIView
 from .models import RoadSegment, Measurement, TrafficIntensity, TrafficCharacterization
-from .serializers import RoadSegmentSerializer, MeasurementSerializer, FileUploadSerializer
+from .serializers import GroupSerializer, RoadSegmentSerializer, MeasurementSerializer, FileUploadSerializer, RegisterUserSerializer
 from django.contrib.gis.geos import LineString
 from .permissions import CanCRUD, CanRead
 import pandas as pd
+from django.contrib.auth.models import Group
 
 def update_segment_characterization(segment, speed):
     """"
@@ -176,3 +177,18 @@ class MeasurementDetailView(APIView):
             {"res": "Measurement deleted!"},
             status=status.HTTP_200_OK
         )
+
+class RegisterUserView(generics.CreateAPIView):
+    """
+    API endpoint to register a user.
+    """
+    serializer_class = RegisterUserSerializer
+    permission_classes = [CanCRUD]
+
+class GroupView(generics.ListAPIView):
+    """
+    API endpoint to list user groups.
+    """
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+    permission_classes = [CanCRUD]
