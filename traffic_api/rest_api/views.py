@@ -39,8 +39,9 @@ class RoadSegmentViewSet(viewsets.ModelViewSet):
     """
     API endpoint that allows CRUD operations on road segments.
     """
-    queryset = RoadSegment.objects.all()
+    queryset = RoadSegment.objects.all().order_by('-characterization')
     serializer_class = RoadSegmentSerializer
+    filterset_fields = ('characterization',)
     permission_classes = [permissions.IsAuthenticated]
 
 
