@@ -1,4 +1,4 @@
-from rest_framework import viewsets, status, permissions, generics, response
+from rest_framework import viewsets, status, generics, response
 from rest_framework.views import APIView
 from .models import RoadSegment, Measurement, TrafficIntensity, TrafficCharacterization
 from .serializers import GroupSerializer, RoadSegmentSerializer, MeasurementSerializer, FileUploadSerializer, RegisterUserSerializer
