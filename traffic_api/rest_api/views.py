@@ -75,7 +75,7 @@ class MeasurementView(APIView):
             self.permission_classes = [CanRead]
         elif self.request.method == 'POST' or self.request.method == 'DELETE' or self.request.method == 'PUT' or self.request.method == 'PATCH':
             self.permission_classes = [CanCRUD]
-        return super(RoadSegmentViewSet, self).get_permissions()
+        return super(MeasurementView, self).get_permissions()
 
     def get(self, request, *args, **kwargs):
         """
@@ -117,7 +117,7 @@ class MeasurementDetailView(APIView):
             self.permission_classes = [CanRead]
         elif self.request.method == 'POST' or self.request.method == 'DELETE' or self.request.method == 'PUT' or self.request.method == 'PATCH':
             self.permission_classes = [CanCRUD]
-        return super(RoadSegmentViewSet, self).get_permissions()
+        return super(MeasurementDetailView, self).get_permissions()
 
     def get_measurement(self, measurement_id):
         '''
