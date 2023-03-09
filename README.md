@@ -44,4 +44,4 @@ To load the provided file, an endpoint was created in the API that reads the fil
 ## Groups and Users Management
 The REST API provides endpoints to list the available groups, register users indicating their group, and login. The other aspects can be managed using the Django admin panel.
 
-To do the authentication, [JSON Web Token](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) was used. The generated Bearer Token should be inserted in the header of the requests.
+To do the authentication, [JSON Web Token](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) was used. The generated Bearer access token should be inserted in the header of the requests.
