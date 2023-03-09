@@ -40,3 +40,8 @@ The file [traffic_speed.csv](traffic_speed.csv) serves as a source of sample dat
 To load the provided file, an endpoint was created in the API that reads the file and, for each row, creates the corresponding road segment and speed measurement, determining the traffic characterization.
 
 *NOTE: Some anomalies were detected in the Long_end, Lat_end and Length columns. It was considered that the Long_end column corresponds to Lat_end, the Lat_end column corresponds to Length, and the Length column corresponds to Long_end.*
+
+## Groups and Users Management
+The REST API provides endpoints to list the available groups, register users indicating their group, and login. The other aspects can be managed using the Django admin panel.
+
+To do the authentication, [JSON Web Token](https://django-rest-framework-simplejwt.readthedocs.io/en/latest/) was used. The generated Bearer Token should be inserted in the header of the requests.
