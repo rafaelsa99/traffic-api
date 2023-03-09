@@ -9,7 +9,7 @@ from django.contrib.auth.models import Group
 
 def update_segment_characterization(segment, speed):
     """"
-    Helper method to update the characterization of a given road segment with a given average spee.
+    Helper method to update the characterization of a given road segment with a given average speed.
     """
     intensity = TrafficIntensity.objects.get(min_threshold__lte=speed, max_threshold__gte=speed)
     characterization = TrafficCharacterization.objects.get(intensity=intensity)
